@@ -1,0 +1,63 @@
+ubuntu@ip-10-1-10-186:~$ mysql -h udacity.c4qaunqa1pcz.us-east-1.rds.amazonaws.com -u admin -p
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 41
+Server version: 8.0.28 Source distribution
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
+| udacity            |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> CREATE DATABASE general_users;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| general_users      |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
+| udacity            |
++--------------------+
+6 rows in set (0.00 sec)
+
+mysql> use general_users
+Database changed
+mysql> CREATE TABLE users (ID INT NOT NULL AUTOINCREMENT, FirstName VARCHAR(255), LastName VARCHAR(255), Age INT, PRIMARY KEY(ID));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AUTOINCREMENT, FirstName VARCHAR(255), LastName VARCHAR(255), Age INT, PRIMARY K' at line 1
+mysql> CREATE TABLE users (ID INT NOT NULL AUTO_INCREMENT, FirstName VARCHAR(255), LastName VARCHAR(255), Age INT, PRIMARY KEY(ID));
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> INSERT INTO users (FirstName, LastName, Age) VALUES ('Chris', 'User', 20);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT * FROM USERS;
+ERROR 1146 (42S02): Table 'general_users.USERS' doesn't exist
+mysql> SELECT * FROM users;
++----+-----------+----------+------+
+| ID | FirstName | LastName | Age  |
++----+-----------+----------+------+
+|  1 | Chris     | User     |   20 |
++----+-----------+----------+------+
+1 row in set (0.01 sec)
+
+mysql>
