@@ -1,0 +1,22 @@
+
+Minimum RTO for a single AZ outage
+
+Given this a multi-AZ, multi-region database, the minimum RTO (recovery time objective) for a 
+single AZ outage (assumes other AZ in the same region is operating normally), would be 
+0 minutes as it would fail over to the other AZ.
+
+Minimum RTO for a single region outage
+
+The minimum RTO for a single region outage (assumes secondary database in other region is operating normally), 
+would be 0 minutes as it would fail over to the other AZ.
+
+Minimum RPO for a single AZ outage
+
+Given this a multi-AZ, multi-region database, the minimum RPO (recovery point objective) for a 
+single AZ outage, would be 0 minutes as the application would switch to the alternative AZ.
+
+Minimum RPO for a single region outage
+
+The minimum RPO for a single region outage, would also be 0 minutes as the application would switch to the 
+alternative region (assumes other region is operating normally).
+.
